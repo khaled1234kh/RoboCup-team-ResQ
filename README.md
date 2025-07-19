@@ -1,179 +1,210 @@
-# 🤖 RCJE-Team-ResQ  
+# 🤖 RCJE-Team-ResQ
 
-This repository contains a **modular, competition-ready robot controller** for the **RoboCup Junior Rescue Simulation** challenge, designed for **Webots** and **Erebus**.  
+This repository features a **scalable, competition-optimized robot controller** developed for the **RoboCup Junior Rescue Simulation Maze**, fully compatible with **Webots** and the **Erebus framework**.
 
-Written in **Python**, it implements advanced rescue behaviors like **victim detection, hazard avoidance, checkpoint navigation, and stuck recovery**. Our team achieved a **Top 5** finish in the *RoboCup Junior Egypt Rescue Simulation Maze*!  
+Built in **Python**, the system supports advanced functionalities including **victim identification**, **hazard detection**, **checkpoint tracking**, and **automated recovery from entrapment**.
+Our solution secured a **Top 5 position** in the **RoboCup Junior Egypt Rescue Simulation Maze**.
 
 ---
+
 ## 📚 Table of Contents
-- [Overview](#-overview)
-- [Sample Score Display](#-sample-score-display)
-- [Features](#-features)
-- [Quick Setup](#-quick-setup)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [How It Works](#-how-it-works)
-- [Team Members](#-team-members)
-- [Personal Achievement](#-personal-achievement)
-- [Contributions](#-contributions)
-- [Contact & Questions](#-contact--questions)
+
+* [Overview](#-overview)
+* [Sample Score Display](#-sample-score-display)
+* [Features](#-features)
+* [Quick Setup](#-quick-setup)
+* [Tech Stack](#-tech-stack)
+* [Architecture](#-architecture)
+* [How It Works](#-how-it-works)
+* [Team Members](#-team-members)
+* [Personal Achievement](#-personal-achievement)
+* [Contributions](#-contributions)
+* [Contact & Questions](#-contact--questions)
 
 ---
 
-## 🌐 Overview  
-The controller integrates with **Webots** via the **Erebus** framework, enabling realistic testing of rescue scenarios. Its modular design ensures easy expansion and debugging.  
+## 🌐 Overview
+
+<img width="100%" alt="System Overview" src="https://github.com/user-attachments/assets/652a5013-fc9d-4314-ada3-2ae3faeae07b" />
+
+This intelligent controller leverages **Webots** and **Erebus** to simulate realistic rescue scenarios in dynamic environments. Its **modular structure** facilitates rapid development, testing, and debugging of autonomous robot behavior.
 
 ---
+
 ## 📊 Sample Score Display
 
-![Score](media/Score.png)
+**Score Output (Webots UI)**
+
+---
 
 ## 🎥 Robot Demo
 
-![Robot Demo](media/Sample.gif)
-
-
-
-## 🚀 Features  
-
-### **Navigation & Mapping**  
-- **Obstacle Avoidance**: Uses LIDAR for dynamic wall detection and path correction.  
-- **Checkpoint System**: Tracks the start zone for scoring and re-entry logic, Floating wall tracking.  
-- **Stuck Recovery**: Executes 180° turns when trapped.
-
-### **Hazard Detection**  
-- **Black Tiles & Swamps**: Identified via color sensors.  
-- **Chemical Hazards**: Detects flammable gas, poison, corrosive, and organic peroxide.  
-
-### **Victim Detection**  
-- **OpenCV Processing**: Analyzes camera feed to identify `H`, `S`, and `U` victims.  
-- **RGB Filtering**: Isolates victim markers under varying lighting.  
-
-### **Movement Logic**  
-- **Wall-Following**: Default navigation mode in tight spaces.  
-- **Floating Wall Detection**: Adjusts path dynamically using checkpoints.  
+![Robot Demo](https://github.com/user-attachments/assets/5f063818-5da5-47ef-a22f-b50b15ac1c58)
 
 ---
 
-## 🛠️ Quick Setup  
-### **Prerequisites**  
-- **[Webots R2023b](https://cyberbotics.com/)** (`2023b`)  
-- **[Erebus](https://erebus.rcj.cloud/) Framework** (`V24.0.0`)  
-- **Python** (`3.10`)
+## 🚀 Features
 
-### **Steps**  
-1. Clone this repository:  
-   ```bash  
-   git clone https://github.com/your-username/RCJE-Team-ResQ.git  
-   cd RCJE-Team-ResQ
-   ```
-2. Install dependencies:
-   ```
-   pip install opencv-python numpy
-   ```
-3. Open the project in Webots 2023b and run the simulation.
+### 🗺️ Navigation & Path Planning
+
+* **Obstacle Avoidance:** Utilizes LIDAR for real-time environmental scanning and route adjustment.
+* **Checkpoint Recognition:** Records start zones and waypoints to support re-entry and scoring logic.
+* **Stuck Recovery:** Performs adaptive 180° maneuvers upon detecting entrapment.
+
+### ⚠️ Hazard Identification
+
+* **Surface Hazards:** Differentiates black tiles and swamp zones using calibrated color sensors.
+* **Chemical Threats:** Detects specific hazardous materials (e.g., poison, flammable gas) using pattern recognition.
+
+### 🧍 Victim Detection
+
+* **Camera Analysis (OpenCV):** Processes visual input to locate H, S, and U victims.
+* **Color Filtering:** Applies HSV-based segmentation to ensure robustness under varying light conditions.
+
+### 🚶 Motion Control
+
+* **Wall-Following:** Default navigation logic optimized for narrow corridors.
+* **Dynamic Path Correction:** Adapts trajectory upon detecting floating walls using LIDAR and checkpoints.
+
+---
+
+## 🛠️ Quick Setup
+
+### ✅ Prerequisites
+
+* **Webots R2023b**
+* **Erebus Framework v24.0.0**
+* **Python 3.10+**
+
+### ⚙️ Installation Steps
+
+```bash
+git clone https://github.com/your-username/RCJE-Team-ResQ.git  
+cd RCJE-Team-ResQ
+pip install opencv-python numpy
+```
+
+1. Open the project in **Webots R2023b**
+2. Launch the simulation environment and run the controller
+
+---
 
 ## 🧰 Tech Stack
 
-| Component   | Version   | Notes                      |
-|-------------|-----------|----------------------------|
-| Webots      | 2023b     | Robot simulation platform  |
-| Erebus      | V24.0.0   | RCJ Webots framework       |
-| Python      | 3.10      | Primary language           |
-| OpenCV      | 4.x       | Computer vision            |
-| NumPy       | 1.23+     | Numerical operations       |
+| Component | Version | Description                   |
+| --------- | ------- | ----------------------------- |
+| Webots    | 2023b   | Robot simulation environment  |
+| Erebus    | V24.0.0 | RCJ simulation framework      |
+| Python    | 3.10    | Primary development language  |
+| OpenCV    | 4.x     | Computer vision processing    |
+| NumPy     | 1.23+   | Numerical computation toolkit |
 
+---
 
 ## 🧠 Architecture
-controller.py  
-├── Robot Initialization  
-│   ├── Device setup (motors, sensors, lidar, camera)  
-│   └── Movement constraints (speed, turning radius)  
-├── Mapping & Navigation  
-│   ├── GPS + Compass position tracking  
-│   └── Dynamic heading adjustment  
-├── Detection Systems  
-│   ├── Color sensor for hazards  
-│   └── OpenCV for victim detection  
-├── Movement Logic  
-│   ├── Wall-following mode  
-│   └── Recovery turns  
-└── Main Loop  
-    ├── Tick-based updates  
-    └── State persistence (victims, hazards)  
+
+```
+controller.py
+├── Robot Initialization
+│   ├── Sensor & Motor Setup (LIDAR, Camera, GPS, Motors)
+│   └── Movement Constraints (Speed, Turn Radius)
+├── Navigation & Mapping
+│   ├── Position Tracking (GPS + Compass)
+│   └── Heading Adjustment (Dynamic Correction)
+├── Detection Modules
+│   ├── Hazard Recognition (Color Sensors)
+│   └── Victim Detection (OpenCV + Camera)
+├── Behavior Logic
+│   ├── Wall-Following
+│   └── Recovery Maneuvers
+└── Main Loop
+    ├── Timed Updates
+    └── State Persistence (Victim Logs, Hazard History)
+```
+
+---
+
 ## 🔍 How It Works
 
-### 🧭 Core Navigation Strategy
-- **Left-Wall Following Algorithm**:  
-  - Uses LIDAR to maintain optimal distance from left wall  
+### 🧭 Navigation Algorithm
 
-### 👁️ Detection Systems
-- **Victim Detection**:  
-  - Processes camera feed using OpenCV  
-  - Identifies H/S/U markers through HSV color filtering  
-  - Logs GPS coordinates when victims are found  
+* **Left-Wall Following:** Maintains optimal clearance from walls using LIDAR to ensure reliable maze traversal.
 
-- **Hazard Detection**:  
-  - **Camera-Based Identification**:  
-    - Detects all hazard types (black tiles, swamps, chemical symbols)  
-    - Uses template matching for chemical hazard recognition   
+### 👁️ Visual Processing
 
-### 🔄 Floating Wall Recovery
-- **Checkpoint System**:  
-  - Creates virtual checkpoints every 10s  
-  - Tracks checkpoint passes using GPS coordinates  
-- **Recovery Protocol**:  
-  - Triggers when same checkpoint is hit 3 times in 10s  
-  - Executes move_backwards() and turns to the right.  
+#### Victim Detection
+
+* Real-time analysis of camera frames using **OpenCV**
+* Identifies H, S, U letters via **HSV color filtering**
+* Logs GPS coordinates of confirmed victims
+
+#### Hazard Detection
+
+* Recognizes black tiles, swamp zones, and chemical labels
+* Uses **template matching** and color classification for accuracy
+
+### 🔄 Stuck Recovery Protocol
+
+* Generates virtual checkpoints every 10 seconds
+* Triggers a recovery routine (reverse and turn) when the same checkpoint is crossed repeatedly in a short timeframe
+
+---
 
 ## 👥 Team Members
 
-**Mohannad Abdallah**  
-*Team Lead & Sole Developer*  
-- Designed and implemented all system architecture  
-- Developed core navigation algorithms  
-- Integrated all sensor systems (LIDAR, Camera, GPS)  
-- Created the victim/hazard detection pipeline  
-- Optimized performance for competition
+**Khaled Mohamed**
+**Team Lead & Solo Developer**
+
+* Architected the entire control system
+* Implemented navigation and obstacle detection algorithms
+* Integrated all sensors (LIDAR, camera, GPS, color sensors)
+* Designed the visual detection pipelines
+* Tuned system performance for competition execution
+
+---
 
 ## 🏆 Personal Achievement
-This project was independently developed and achieved **Top 5** placement in the RoboCup Junior Egypt Rescue Simulation Maze, demonstrating:
-- Complete system design and implementation capability  
-- Mastery of robotic control systems  
-- Advanced problem-solving in dynamic environments
+
+This project was **fully self-developed** and led to a **Top 5 national ranking** in the RoboCup Junior Egypt Rescue Simulation Maze.
+
+It demonstrates:
+
+* Complete control system design expertise
+* Strong robotics and AI implementation skills
+* Real-time problem-solving in constrained, dynamic environments
+
+---
 
 ## 🤝 Contributions
-We welcome all contributions - from bug reports to feature implementations!
+
+We welcome community involvement! You can help by:
 
 ### 🐛 Reporting Bugs
-- Open a [new issue](https://github.com/your-username/RCJE-Team-ResQ/issues) with:
-  - Clear title (e.g., "LIDAR fails at corridor intersections")
-  - Webots version and Python environment details
-  - Complete reproduction steps
-  - Expected vs actual behavior
-  - Relevant screenshots/simulation logs
-  - Error messages (if any)
 
-### 💡 Feature Requests
-- Suggest enhancements by:
-  1. Checking if the feature exists in [open issues](https://github.com/your-username/RCJE-Team-ResQ/issues)
-  2. Creating a new issue with:
-     - "Feature Request:" prefix in title
-     - Detailed use case explanation
-     - Proposed technical approach (optional)
-     - Example scenarios
+Please include:
+
+* Clear issue title (e.g., “LIDAR misreads in curved corridors”)
+* Webots & Python version
+* Reproduction steps and expected behavior
+* Screenshots, logs, and error messages
+
+### 💡 Suggesting Features
+
+Before opening a new request:
+
+* Check open issues for duplicates
+* Include:
+
+  * Prefix "Feature Request:" in the title
+  * Detailed use-case description
+  * Optional technical approach or mockup
+
+---
 
 ## 📬 Contact & Questions
 
-If you have any questions or need assistance, feel free to reach out to me directly. I’m always happy to help!
+For inquiries, collaboration, or feedback, feel free to reach out:
 
-**Mohannad Abdallah**  
-- Email: [mohannadx101@gmail.com](mailto:mohannadx101@gmail.com)  
-- GitHub: [github.com/Mohannadx101](https://github.com/Mohannadx101)  
-- LinkedIn: [Mohannad Abdallah](https://www.linkedin.com/in/mohannad-abdallah-3571552a2/)
-
-![MIT License](https://img.shields.io/badge/license-MIT-green)
-![Python 3.10](https://img.shields.io/badge/python-3.10-blue)
-![GitHub stars](https://img.shields.io/github/stars/Mohannadx101/RCJE-Team-ResQ?style=social)
-![GitHub issues](https://img.shields.io/github/issues/Mohannadx101/RCJE-Team-ResQ)
-![GitHub contributors](https://img.shields.io/github/contributors/Mohannadx101/RCJE-Team-ResQ)
+* **Email:** [khaledabdulla@gmail.com](mailto:khaledabdulla@gmail.com)
+* **GitHub:** [github.com/khaled1234kh](https://github.com/khaled1234kh)
+* **LinkedIn:** [linkedin.com/in/khaled-mohamed-22a22a325](https://linkedin.com/in/khaled-mohamed-22a22a325)
