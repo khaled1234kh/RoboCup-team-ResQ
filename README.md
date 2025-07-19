@@ -30,14 +30,15 @@ This intelligent controller leverages **Webots** and **Erebus** to simulate real
 ---
 
 ## 📊 Sample Score Display
+<img width="2552" height="1400" alt="image" src="https://github.com/user-attachments/assets/99f666de-7a37-4cca-aa69-2871b56ffc78" />
 
 **Score Output (Webots UI)**
 
 ---
 
 ## 🎥 Robot Demo
+![Uploading Sample.gif…]()
 
-![Robot Demo](https://github.com/user-attachments/assets/5f063818-5da5-47ef-a22f-b50b15ac1c58)
 
 ---
 
