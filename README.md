@@ -25,8 +25,6 @@ Our solution secured a **Top 5 position** in the **RoboCup Junior Egypt Rescue S
 
 ## 🌐 Overview
 
-<img width="100%" alt="System Overview" src="https://github.com/user-attachments/assets/652a5013-fc9d-4314-ada3-2ae3faeae07b" />
-
 This intelligent controller leverages **Webots** and **Erebus** to simulate realistic rescue scenarios in dynamic environments. Its **modular structure** facilitates rapid development, testing, and debugging of autonomous robot behavior.
 
 ---
