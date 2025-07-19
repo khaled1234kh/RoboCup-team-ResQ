@@ -37,7 +37,8 @@ This intelligent controller leverages **Webots** and **Erebus** to simulate real
 ---
 
 ## 🎥 Robot Demo
-![Uploading Sample.gif…]()
+![Sample](https://github.com/user-attachments/assets/4c54f653-efd3-4715-ad3c-2d45887aceb9)
+
 
 
 ---
